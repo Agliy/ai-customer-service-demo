@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能客服助手 Demo - Trae 沙龙展示项目</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 演示项目标识横幅 -->
+    <div style="background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); padding: 10px 24px; text-align: center; color: #ffffff; font-size: 13px; font-weight: 500;">
+        🎉 【Trae 沙龙 Demo】AI智能客服助手 - 团队项目展示
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="#" class="brand">
+                <div class="brand-icon">🤖</div>
+                <div class="brand-text">
+                    <span class="brand-name">AI智能客服助手</span>
+                    <span class="brand-tagline">7x24小时智能值守</span>
+                </div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#features">功能特色</a></li>
+                <li><a href="#chat">实时演示</a></li>
+                <li><a href="#stats">数据能力</a></li>
+                <li><a href="#contact">联系我们</a></li>
+                <li><a href="../backend-api/index.html">后端对接</a></li>
+                <li><a href="../chat/index.html">AI客服</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary" onclick="window.location.href='../chat/index.html'">免费试用</button>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero区 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i></i>
+                    <span>大模型驱动 · 零服务器部署</span>
+                </div>
+                <h1 class="hero-title">
+                    让AI为您的店铺<br>
+                    <span>24小时智能值守</span>
+                </h1>
+                <p class="hero-desc">
+                    基于大模型的智能客服系统，支持知识库精准检索、自动回复、商品文案一键生成，
+                    极简部署，两周上线，预算控制在两万元以内。
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="window.location.href='../chat/index.html'">立即免费试用</button>
+                    <button class="btn btn-secondary">预约产品演示</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat1">94.2%</span>
+                        <span class="stat-label">问题解决率 <span style="font-weight:400;color:var(--text-light);font-size:10px;">(演示数据)</span></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat2">42K+</span>
+                        <span class="stat-label">生成文案字数 <span style="font-weight:400;color:var(--text-light);font-size:10px;">(演示数据)</span></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat3">0</span>
+                        <span class="stat-label">服务器成本 <span style="font-weight:400;color:var(--text-light);font-size:10px;">(演示数据)</span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-avatar">🤖</div>
+                        <div class="demo-info">
+                            <div class="demo-title">AI智能客服</div>
+                            <div class="demo-status">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                在线服务中
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="chat-bubble user">支持7天无理由退换货吗？</div>
+                        <div class="chat-bubble ai">
+                            <div class="ai-icon">🤖</div>
+                            <div class="ai-content">亲爱的小主！我们全店支持【7天无理由退换货】服务哦...</div>
+                        </div>
+                        <div class="typing-indicator">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="floating-card card-1">
+                    <div class="float-icon green">⚡</div>
+                    <div class="float-text">
+                        <span class="float-value">秒级响应</span>
+                        <span class="float-label">闪电般的回答速度</span>
+                    </div>
+                </div>
+                
+                <div class="floating-card card-2">
+                    <div class="float-icon blue">📊</div>
+                    <div class="float-text">
+                        <span class="float-value">94.2%</span>
+                        <span class="float-label">自动拦截解答率</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 卖点展示区 -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <div class="section-badge">核心功能</div>
+            <h2 class="section-title">为什么选择AI智能客服助手</h2>
+            <p class="section-desc">
+                专为中小商户定制的低成本智能提效方案，整合上下文知识注入的实时自动回复与口语化商品文案生成器。
+            </p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon primary">💬</div>
+                <h3 class="feature-title">7×24小时AI自动回复</h3>
+                <p class="feature-desc">
+                    全天候智能值守，无需人工干预，自动解答客户常见问题，大幅降低人力成本，提升客户满意度。
+                </p>
+            </div>
+            
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon secondary">🧠</div>
+                <h3 class="feature-title">知识库精准应答</h3>
+                <p class="feature-desc">
+                    大模型实时读取客服规则知识库，基于维护的售后条款、发货策略完成深度语义学习并精准安全解答。
+                </p>
+            </div>
+            
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon green">✍️</div>
+                <h3 class="feature-title">一键商品文案生成</h3>
+                <p class="feature-desc">
+                    输入商品名称和核心卖点，智能生成适合朋友圈、小红书及商品详情页展示的口语化文案。
+                </p>
+            </div>
+            
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon orange">🚀</div>
+                <h3 class="feature-title">无服务器极简部署</h3>
+                <p class="feature-desc">
+                    端到端架构设计，直接连接大模型开放平台，免去服务器费用，两周极速上线，预算可控。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实时聊天演示区 -->
+    <section class="chat-demo" id="chat">
+        <div class="section-header">
+            <div class="section-badge">实时演示</div>
+            <h2 class="section-title">体验AI智能客服</h2>
+            <p class="section-desc">
+                <span style="color: var(--primary-color); font-weight: 600;">【演示模式】</span> 与我们的AI客服助手实时对话，体验智能应答的强大能力。
+            </p>
+        </div>
+        
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <div class="chat-avatar">🤖</div>
+                    <div>
+                        <div class="chat-title">AI智能客服助手</div>
+                        <div class="chat-status">
+                            <span class="status-dot"></span>
+                            在线服务中
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-badge">大模型驱动</div>
+            </div>
+            
+            <div class="chat-messages-area" id="chatMessages">
+                <div class="message-row">
+                    <div class="message-avatar ai">🤖</div>
+                    <div class="message-bubble ai">
+                        <div class="message-label">✦ AI 回复</div>
+                        您好！欢迎来到AI智能客服助手，请问有什么可以帮您的吗？
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <div class="chat-input-row">
+                    <input type="text" class="chat-input" placeholder="输入您的问题..." id="chatInput">
+                    <button class="chat-send-btn" id="chatSend">
+                        <i>→</i>
+                        发送
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据展示区 -->
+    <section class="stats" id="stats">
+        <div class="section-header">
+            <div class="section-badge">数据说话</div>
+            <h2 class="section-title">用数据证明实力</h2>
+            <p class="section-desc">
+                <span style="color: var(--primary-color); font-weight: 600;">【演示数据】</span> 展示系统核心能力指标（数据为模拟数据）
+            </p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card animate-on-scroll">
+                <div class="stat-number" id="count1">0</div>
+                <div class="stat-label">累计服务客户</div>
+            </div>
+            <div class="stat-card animate-on-scroll">
+                <div class="stat-number" id="count2">0</div>
+                <div class="stat-label">日均处理咨询</div>
+            </div>
+            <div class="stat-card animate-on-scroll">
+                <div class="stat-number" id="count3">0</div>
+                <div class="stat-label">问题解决率</div>
+            </div>
+            <div class="stat-card animate-on-scroll">
+                <div class="stat-number" id="count4">0</div>
+                <div class="stat-label">节省人力成本</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例展示区 -->
+    <section class="testimonials">
+        <div class="section-header">
+            <div class="section-badge">客户评价</div>
+            <h2 class="section-title">听听客户怎么说</h2>
+            <p class="section-desc">
+                <span style="color: var(--primary-color); font-weight: 600;">【模拟案例】</span> 展示产品应用效果（案例为虚构）
+            </p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card animate-on-scroll">
+                <p class="testimonial-content">
+                    自从接入AI智能客服助手，客服团队从5人缩减到2人，运营成本降低了60%，客户满意度反而提升了。
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">张</div>
+                    <div class="author-info">
+                        <span class="author-name">张经理</span>
+                        <span class="author-title">某电商店铺负责人</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card animate-on-scroll">
+                <p class="testimonial-content">
+                    商品文案生成器太好用了！以前写文案要半天，现在一键生成，风格多样，直接就能用，效率提升不是一点点。
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">李</div>
+                    <div class="author-info">
+                        <span class="author-name">李店长</span>
+                        <span class="author-title">某美妆品牌店主</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card animate-on-scroll">
+                <p class="testimonial-content">
+                    最满意的是知识库功能，AI只会根据我们设定的规则回答，再也不用担心机器人乱回复了，很安心。
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">王</div>
+                    <div class="author-info">
+                        <span class="author-name">王总</span>
+                        <span class="author-title">某数码商城老板</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 转化表单区 -->
+    <section class="cta" id="contact">
+        <div class="cta-content">
+            <h2 class="cta-title">立即开启智能客服之旅</h2>
+            <p class="cta-desc">
+                填写信息，我们的专家团队将在24小时内与您联系，为您定制专属解决方案。
+            </p>
+            <form class="cta-form" id="ctaForm">
+                <input type="text" class="form-input" placeholder="您的姓名" id="nameInput">
+                <input type="tel" class="form-input" placeholder="联系电话" id="phoneInput">
+                <button type="submit" class="cta-btn">免费预约演示</button>
+            </form>
+            <p class="cta-note">* 我们承诺保护您的隐私，绝不泄露您的信息</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-brand-icon">🤖</div>
+                <span class="footer-brand-text">AI智能客服助手 Demo</span>
+                <p class="footer-desc">Trae 沙龙展示项目 · 2人团队作品</p>
+            </div>
+            
+            <div class="footer-links">
+                <span class="footer-links-title">项目信息</span>
+                <span style="color: rgba(255,255,255,0.4); font-size:12px;">🎯 项目状态：演示版</span>
+                <span style="color: rgba(255,255,255,0.4); font-size:12px;">👥 团队规模：2人</span>
+                <span style="color: rgba(255,255,255,0.4); font-size:12px;">📅 展示时间：Trae 沙龙</span>
+                <span style="color: rgba(255,255,255,0.4); font-size:12px;">⚠️ 数据说明：模拟数据</span>
+            </div>
+            
+            <div class="footer-links">
+                <span class="footer-links-title">功能模块</span>
+                <a href="#features">功能介绍</a>
+                <a href="#chat">实时演示</a>
+                <a href="#stats">数据能力</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            
+            <div class="footer-links">
+                <span class="footer-links-title">关于项目</span>
+                <a href="#">项目介绍</a>
+                <a href="#">加入我们</a>
+                <a href="#">联系我们</a>
+                <a href="#">隐私政策</a>
+                <a href="../backend-api/index.html">后端对接</a>
+                <a href="../chat/index.html">AI客服体验</a>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            © 2026 AI智能客服助手 Demo | 团队项目 | Trae 沙龙展示
+        </div>
+    </footer>
+
+    <!-- Toast容器 -->
+    <div id="toastContainer"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
