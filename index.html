@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能客服助手 Demo — 入口</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #16a34a;
+            --primary-light: #4ade80;
+            --primary-dark: #15803d;
+            --secondary: #059669;
+            --accent: #22d3ee;
+            --bg: #f0fdf4;
+            --bg-card: #ffffff;
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #94a3b8;
+            --border: #dcfce7;
+            --shadow: 0 10px 25px -5px rgba(22,163,74,0.15), 0 4px 10px -4px rgba(22,163,74,0.1);
+            --shadow-hover: 0 20px 35px -5px rgba(22,163,74,0.2), 0 8px 15px -6px rgba(22,163,74,0.15);
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            color: var(--text-dark);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: rgba(22,163,74,0.1);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .badge i {
+            width: 8px; height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-medium);
+            text-align: center;
+            margin-bottom: 48px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 960px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
+        }
+
+        .card:hover::before { transform: scaleX(1); }
+
+        .card-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover .card-icon { transform: scale(1.1); }
+
+        .card-icon.green { background: rgba(22,163,74,0.1); }
+        .card-icon.blue { background: rgba(34,211,238,0.1); }
+        .card-icon.purple { background: rgba(99,102,241,0.1); }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px 0 rgba(22,163,74,0.3);
+        }
+
+        .card:hover .card-btn {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(22,163,74,0.4);
+        }
+
+        .footer {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 28px; }
+            .cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="badge"><i></i>Trae 沙龙 Demo · 2人团队项目</div>
+    <h1>AI智能客服助手 <span>Demo</span></h1>
+    <p class="subtitle">点击下方卡片进入对应功能模块，体验完整的 AI 智能客服解决方案。</p>
+
+    <div class="cards">
+        <a class="card" href="pages/landing/index.html">
+            <div class="card-icon green">🏠</div>
+            <div class="card-title">产品落地页</div>
+            <div class="card-desc">展示产品功能特色、数据能力、客户案例及转化表单。包含滚动动效与响应式布局。</div>
+            <div class="card-btn">进入落地页 →</div>
+        </a>
+
+        <a class="card" href="pages/chat/index.html">
+            <div class="card-icon blue">💬</div>
+            <div class="card-title">AI 客服体验</div>
+            <div class="card-desc">实时对话演示，支持品牌信息编辑、快捷问题、清空对话及模拟 AI 智能应答。</div>
+            <div class="card-btn">开始对话 →</div>
+        </a>
+
+        <a class="card" href="pages/backend-api/index.html">
+            <div class="card-icon purple">🔌</div>
+            <div class="card-title">后端 API 文档</div>
+            <div class="card-desc">接口完整说明，包含系统状态监控、请求/响应示例、代码复制及操作日志展示。</div>
+            <div class="card-btn">查看接口 →</div>
+        </a>
+    </div>
+
+    <div class="footer">
+        © 2026 AI智能客服助手 Demo | 团队项目 | Trae 沙龙展示
+    </div>
+</body>
+</html>
