@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 智能客服助手 — 潮品数码商城</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- ========== Sidebar ========== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section sidebar-divider">
+      <div class="brand-row">
+        <div class="brand-icon">🤖</div>
+        <div>
+          <div class="brand-name">智能客服</div>
+          <div class="brand-status"><span class="brand-status-dot"></span>在线服务中</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section sidebar-divider">
+      <div class="section-label">品牌信息</div>
+      <div id="brandView">
+        <div class="brand-text" onclick="startEditBrand()" id="brandDisplay"></div>
+      </div>
+      <div class="brand-edit-area" id="brandEdit" style="display:none">
+        <textarea id="brandInput"></textarea>
+        <div class="brand-edit-btns">
+          <button class="btn-sm btn-save" onclick="saveBrand()">保存</button>
+          <button class="btn-sm btn-cancel" onclick="cancelEditBrand()">取消</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section" style="flex:1;overflow-y:auto;">
+      <div class="section-label">常见问题</div>
+      <div id="quickBtns"></div>
+    </div>
+
+    <div class="sidebar-section" style="margin-top:12px;">
+      <button class="clear-btn" onclick="clearChat()">清空对话</button>
+    </div>
+  </aside>
+
+  <!-- ========== Main Chat ========== -->
+  <div class="main">
+    <div class="header">
+      <div class="header-left">
+        <button class="menu-btn" onclick="toggleSidebar()" title="切换侧边栏">☰</button>
+        <div>
+          <div class="header-title">AI 客服助手</div>
+          <div class="header-sub">由 DeepSeek 驱动 · 智能应答</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;">
+        <div class="ai-badge">✦ AI 在线</div>
+        <button onclick="window.location.href='../backend-api/index.html'" style="margin-left:12px;padding:6px 14px;border:1px solid #E2E8F0;border-radius:8px;background:#fff;color:#64748B;cursor:pointer;font-size:13px;">后端对接</button>
+        <button onclick="window.location.href='../landing/index.html'" style="margin-left:8px;padding:6px 14px;border:1px solid #E2E8F0;border-radius:8px;background:#fff;color:#64748B;cursor:pointer;font-size:13px;">返回首页</button>
+      </div>
+    </div>
+
+    <div class="messages" id="messages">
+      <div class="empty-state" id="emptyState">
+        <div class="icon-lg">💬</div>
+        <h3>有什么可以帮你的？</h3>
+        <p>点击左侧常见问题或直接输入</p>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-row">
+        <textarea id="msgInput" rows="1" placeholder="输入你的问题… (Enter 发送)" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="send-btn inactive" id="sendBtn" onclick="sendMessage()">↑</button>
+      </div>
+      <div class="input-hint">Demo 演示模式 · AI 智能应答</div>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
